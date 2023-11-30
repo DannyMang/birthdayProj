@@ -4,11 +4,17 @@ import dudu from '../assets/img/baby-bubu-bubu-dudu.gif';
 import wallpaper from '../assets/img/hlelokityt.jpeg';
 import snowflowerSound from '../assets/sounds/snowflower.mp3';
 import './MainPage.css';
+import ImageSlider from './ImageSlider';
+import imageOne from '../assets/img/hmart.jpg';
+import imageTwo from '../assets/img/bowling.jpg';
+import imageThree from '../assets/img/sjsu.jpg';
+import imageFour from '../assets/img/yummy.jpg';
 
 function MainPage() {
   const duduStyle = {
     width: '50%', // Adjust the size of the Dudu image
   };
+  
 
   const chatBoxStyle = {
     position: 'absolute',
@@ -23,7 +29,8 @@ function MainPage() {
 
   const [typingText, setTypingText] = useState('');
   const [isAudioPlaying, setAudioPlaying] = useState(true);
-
+  const [showImageSlider, setImageSlider] = useState(false);
+  const imageArray = [imageOne,imageTwo,imageThree,imageFour];
   useEffect(() => {
     const messages = [
       'Hey bubu! dudu here :3',
@@ -37,6 +44,7 @@ function MainPage() {
       'dudu loved watched youtube rewind growing up so this is a recap video of all of dudus favoirte moments this year',
       'Hope you enjoy this :>',
     ];
+    
 
     let currentIndex = 0;
 
@@ -45,7 +53,10 @@ function MainPage() {
         const currentMessage = messages[currentIndex];
         setTypingText(currentMessage);
         currentIndex += 1;
-        setTimeout(typeText, 6000); 
+        setTimeout(typeText, 500); 
+      }
+      else {
+        setImageSlider(true);
       }
     };
     const audio = new Audio(snowflowerSound);
@@ -57,12 +68,18 @@ function MainPage() {
 
   return (
     <div>
-      <div style={duduStyle}>
-        <img src={dudu} alt="Dudu" />
-      </div>
-      <div style={chatBoxStyle}>
-        <p>{typingText}</p>
-      </div>
+      {showImageSlider ? (
+        <ImageSlider images={imageArray} />
+      ) : (
+        <div>
+          <div style={duduStyle}>
+            <img src={dudu} alt="Dudu" />
+          </div>
+          <div style={chatBoxStyle}>
+            <p>{typingText}</p>
+          </div>
+        </div>
+      )}
       {isAudioPlaying && (
         <Sound
           url={snowflowerSound}
