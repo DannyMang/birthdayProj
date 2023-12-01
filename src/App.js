@@ -14,7 +14,10 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header" style={{ backgroundImage: `url(${isPasswordCorrect ? wallpaper : cinmarol})` }}>
+      <header className="App-header" style={{ 
+        backgroundImage: `url(${isPasswordCorrect ? wallpaper : cinmarol})`,
+        backgroundSize: 'cover', 
+      }}>
         {isPasswordCorrect ? (
           <MainPage />
         ) : (
