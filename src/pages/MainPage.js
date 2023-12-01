@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Sound from 'react-sound';
 import dudu from '../assets/img/baby-bubu-bubu-dudu.gif';
-import wallpaper from '../assets/img/hlelokityt.jpeg';
 import snowflowerSound from '../assets/sounds/snowflower.mp3';
 import './MainPage.css';
 import ImageSlider from './ImageSlider';
